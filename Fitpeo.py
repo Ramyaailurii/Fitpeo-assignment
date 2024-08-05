@@ -56,19 +56,18 @@ actions.scroll_by_amount(0, 500).perform()
 
 # Select CPT Codes:
 
-driver.find_element(By.XPATH,"//div[@class='MuiBox-root css-rfiegf']//div[1]//label[1]//span[1]//input[1]").click()
-time.sleep(3)
-driver.find_element(By.XPATH,"//div[@class='MuiBox-root css-1p19z09']//div[2]//label[1]//span[1]//input[1]").click()
-time.sleep(3)
-driver.find_element(By.XPATH,"//div[3]//label[1]//span[1]//input[1]").click()
-time.sleep(3)
+Checkbox = driver.find_elements(By.XPATH,"(//input[@type='checkbox'])")
+Checkbox[0].click()
+Checkbox[1].click()
+Checkbox[2].click()
+Checkbox[7].click()
 
 
 #Validate Total Recurring Reimbursement:
 
-header=driver.find_element(By.XPATH,"//p[@class='MuiTypography-root MuiTypography-body1 inter css-hocx5c'][normalize-space()='$67200']")
+header=driver.find_element(By.XPATH,"//p[@class='MuiTypography-root MuiTypography-body1 inter css-hocx5c'][normalize-space()='$75600']")
 header_text = header.text.strip().replace('\n', ' ')
-expected_value = "$67200"
+expected_value = "$75600"
 assert header_text == expected_value, f"Expected '{expected_value}', but got '{header_text}'"
 
 
@@ -77,6 +76,5 @@ assert header_text == expected_value, f"Expected '{expected_value}', but got '{h
 
 header=driver.find_element(By.XPATH,"//p[@class='MuiTypography-root MuiTypography-body2 inter css-1xroguk'][contains(text(),'Total Recurring Reimbursement for all Patients Per')]")
 header_text = header.text.strip().replace('\n', ' ')
-expected_value = "Total Recurring Reimbursement for all Patients Per Month: $67200"
+expected_value = "Total Recurring Reimbursement for all Patients Per Month: $75600"
 assert header_text == expected_value, f"Expected '{expected_value}', but got '{header_text}'"
-
